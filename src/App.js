@@ -14,7 +14,7 @@ const FlexContainer = styled.div`
   flex-wrap: wrap;
 `
 function App() {
-  const [pokemon, setPokemon] = useState({
+  const [pokemon1, setPokemon1] = useState({
     name: "Pichu",
     type: "Electric",
     evolved: false,
@@ -24,13 +24,43 @@ function App() {
     id: 0
   })
 
+  const [pokemon2, setPokemon2] = useState({
+    name: "Bulbasaur",
+    type: "Grass",
+    evolved: false,
+    weight: 6.9,
+    color: 'green',
+    image: 'https://archives.bulbagarden.net/media/upload/thumb/2/21/001Bulbasaur.png/250px-001Bulbasaur.png',
+    id: 0
+  })
+
+  function evoluir1() {
+    setPokemon1({... pokemon1, name:"Pikachu", weight: 6, image: "https://archives.bulbagarden.net/media/upload/archive/0/0d/20100904002342%21025Pikachu.png"})
+  }
+
+  function evoluir2() {
+    setPokemon2({... pokemon2, name:"Ivysaur", weight: 13, image: "https://archives.bulbagarden.net/media/upload/thumb/7/73/002Ivysaur.png/250px-002Ivysaur.png"})
+  }
   // Para fazer seus próximos pokemons, crie novos estados!
 
   return ( <>
   <GlobalStyles/>
     <FlexContainer>
       {/* Aqui neste componente, passe as props. Lembre-se que também é possivel passar a função de setState via props! */}
-      <PokemonCard/>
+      <PokemonCard name= {pokemon1.name}
+      image= {pokemon1.image}
+      color= {pokemon1.color} 
+      type= {pokemon1.type}
+      weight= {pokemon1.weight}
+      evoluindo={evoluir1}
+      />
+      <PokemonCard name= {pokemon2.name}
+      image= {pokemon2.image}
+      color= {pokemon2.color} 
+      type= {pokemon2.type}
+      weight= {pokemon2.weight}
+      evoluindo={evoluir2}
+      />
       {/* Crie aqui seus próximos pokemons! */}
     </FlexContainer>
   </>
